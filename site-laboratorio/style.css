@@ -1,0 +1,533 @@
+/* === VARIÁVEIS DE CORES === */
+:root {
+    --bg-light: #FFFFFF; /* Fundo Principal Branco */
+    --text-dark: #2C3E50; /* Texto Principal Azul Marinho */
+    --accent-blue: #3498DB; /* Azul de Destaque */
+    --light-grey: #ECF0F1; /* Cinza de Fundo Secundário */
+    --subtle-text: #7F8C8D; /* Cinza para textos secundários */
+}
+
+/* === BASE GERAL === */
+body {
+    font-family: 'Montserrat', sans-serif;
+    margin: 0;
+    background-color: var(--bg-light);
+    color: var(--text-dark);
+    line-height: 1.6;
+}
+
+main {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+}
+
+h1, h2, h3, h4 {
+    color: var(--text-dark);
+    font-weight: 600;
+}
+
+a {
+    color: var(--accent-blue);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: var(--subtle-text);
+}
+
+.section-title {
+    text-align: center;
+    font-size: clamp(2rem, 4vw, 3rem);
+    padding-bottom: 0.5em;
+    border-bottom: 2px solid var(--accent-blue);
+    margin-bottom: 2em;
+}
+
+/* === HEADER E NAVEGAÇÃO === */
+header {
+    background-color: var(--bg-light);
+    padding: 0.5rem 1rem; /* Mantivemos o padding sutil */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    height: 200px; /* Definimos uma altura fixa para o header */
+}
+
+.header-container {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%; /* Isso garante que o contêiner utilize toda a altura do header */
+}
+
+.logo {
+    height: 100%; /* O logo agora preenche 100% da altura do container */
+    width: auto; /* A largura é ajustada automaticamente para manter a proporção */
+}
+
+.main-nav a {
+    color: var(--text-dark);
+    font-weight: 600;
+    margin-left: 1.5rem;
+    padding-bottom: 5px;
+    position: relative;
+}
+
+.main-nav a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: var(--accent-blue);
+    transition: width 0.3s ease;
+}
+
+.main-nav a:hover::after,
+.main-nav a.ativo::after {
+    width: 100%;
+}
+
+/* === BANNER PRINCIPAL === */
+/* Estilo para a seção principal do banner */
+.banner {
+    background-size: cover;
+    background-position: center;
+    height: 60vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    transition: background-image 1s ease-in-out;
+}
+
+/* Camada escura transparente sobre a imagem para contraste */
+.banner::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(44, 62, 80, 0); /* Escurece a imagem de fundo */
+    z-index: 1;
+}
+
+/* O contêiner para o texto que terá a "tarja" transparente */
+.banner-text {
+    position: relative;
+    z-index: 2; /* Garante que o texto fique acima da camada escura */
+    background-color: rgba(255, 255, 255, 0.2); /* Fundo branco com 20% de opacidade */
+    padding: 1.5rem 2.5rem;
+    border-radius: 8px;
+    backdrop-filter: blur(5px); /* Efeito de "vidro fosco" */
+}
+
+.banner-text h1 {
+    font-size: clamp(2rem, 5vw, 4rem);
+    margin: 0;
+    color: #fff; /* Texto principal em branco */
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5); /* Sombra para melhorar a legibilidade */
+}
+
+.banner-text p {
+    font-size: clamp(1rem, 2vw, 1.5rem);
+    color: #fff; /* Texto secundário em branco */
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5); /* Sombra para melhorar a legibilidade */
+    margin-top: 0.5rem;
+}
+
+/* Remova ou comente esta parte */
+/*
+.overlay {
+    background-color: rgba(245, 242, 242, 0.767);
+    padding: 2rem;
+    border-radius: 12px;
+}
+*/
+
+/* Adicione esta regra para o banner */
+.banner h1 {
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    margin: 0;
+    color: #fff; /* Cor do texto principal */
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5); /* Sombra para o texto, melhora a legibilidade */
+    padding-bottom: 0.2em;
+    border-bottom: 3px solid #3498DB; /* Adiciona uma linha de destaque */
+}
+
+.banner p {
+    font-size: clamp(1rem, 2vw, 1.5rem);
+    color: #fff; /* Cor do texto secundário */
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5); /* Sombra para o texto */
+    margin-top: 0.5rem;
+}
+
+/* === PÁGINA INÍCIO (`index.html`) === */
+.boas-vindas {
+    text-align: center;
+    padding: 2rem 0;
+}
+
+.cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.card {
+    background-color: var(--light-grey);
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-10px);
+}
+
+.card h3 {
+    margin-top: 0;
+    color: var(--accent-blue);
+}
+
+.card p {
+    color: var(--subtle-text);
+}
+
+/* === PÁGINA LINHAS DE PESQUISA (`linhas.html`) === */
+.research-line {
+    display: flex;
+    background-color: var(--light-grey);
+    border-radius: 12px;
+    overflow: hidden;
+    margin-bottom: 2rem;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.research-line.reverse {
+    flex-direction: row-reverse;
+}
+
+.research-line img {
+    width: 40%;
+    object-fit: cover;
+}
+
+.research-text {
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.research-text h3 {
+    font-size: clamp(1.2rem, 3vw, 1.8rem);
+}
+
+.research-line {
+    /* ... código existente ... */
+    transition: transform 0.3s ease;
+}
+
+.research-line:hover {
+    transform: translateY(-10px);
+}
+
+/* === PÁGINA MEMBROS (`membros.html`) === */
+/* === PÁGINA MEMBROS (`membros.html`) === */
+.team-members {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.member-card {
+    background-color: var(--light-grey);
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+    overflow: hidden; /* Garante que a imagem se ajuste às bordas do card */
+}
+
+.member-card:hover {
+    transform: translateY(-10px);
+}
+
+.member-card img {
+    width: 100%; /* A imagem ocupa 100% da largura do card */
+    height: 250px; /* Define uma altura fixa para a imagem */
+    object-fit: cover; /* Garante que a imagem preencha o espaço sem distorcer */
+    border-radius: 8px 8px 0 0; /* Apenas os cantos superiores são arredondados */
+    border-bottom: 3px solid var(--accent-blue); /* Adiciona uma linha na parte inferior */
+}
+
+.member-info {
+    padding: 1.5rem; /* Adiciona espaçamento interno para o texto */
+    text-align: center;
+}
+
+.member-info h3 {
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+    font-size: 1.2rem;
+}
+
+.member-info p {
+    margin: 0;
+    color: var(--subtle-text);
+}
+
+.member-info a {
+    display: inline-block;
+    margin-top: 0.5rem;
+    font-weight: 600;
+}
+
+.member-card {
+    /* ... código existente ... */
+    transition: transform 0.3s ease;
+}
+
+.member-card:hover {
+    transform: translateY(-10px);
+}
+
+/* === PÁGINA PARCEIROS (`parceria.html`) === */
+.partners-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+}
+
+.partner-card {
+    background-color: var(--light-grey);
+    padding: 1.5rem;
+    border-radius: 8px;
+    text-align: center;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.partner-card img {
+    max-width: 150px;
+    margin-bottom: 1rem;
+}
+
+.partner-info h3 {
+    margin-top: 0;
+    margin-bottom: 1rem;
+}
+
+.partner-info a {
+    display: block;
+    font-weight: 600;
+}
+
+.partner-card {
+    /* ... código existente ... */
+    transition: transform 0.3s ease;
+}
+
+.partner-card:hover {
+    transform: translateY(-10px);
+}
+
+/* === PÁGINA PUBLICAÇÕES (`publicacoes.html`) === */
+.publications-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.publication-card {
+    background-color: var(--light-grey);
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.publication-card h3 {
+    margin-top: 0;
+    font-size: 1.2rem;
+}
+
+.publication-card p {
+    margin: 0.5rem 0;
+    color: var(--subtle-text);
+}
+
+.publication-card strong {
+    color: var(--text-dark);
+}
+
+.publication-link {
+    font-weight: 600;
+}
+
+.publication-card {
+    /* ... código existente ... */
+    transition: transform 0.3s ease;
+}
+
+.publication-card:hover {
+    transform: translateY(-10px);
+}
+
+/* === PÁGINA EVENTOS (`eventos.html`) === */
+/* === PÁGINA EVENTOS (`eventos.html`) === */
+
+.events-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.event-card {
+    background-color: var(--light-grey);
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.event-card:hover {
+    transform: translateY(-10px);
+}
+
+.event-card h3 {
+    margin-top: 0;
+    font-size: 1.5rem;
+    color: var(--text-dark);
+}
+
+.event-meta {
+    font-style: italic;
+    color: var(--subtle-text);
+    margin-bottom: 1rem;
+}
+
+.event-meta .event-date,
+.event-meta .event-location {
+    font-weight: 600;
+}
+.events-list {
+    background-color: var(--light-grey);
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.events-list ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.events-list li {
+    font-size: 1.1rem;
+    padding: 10px 0;
+    border-bottom: 1px solid #BDC3C7;
+}
+
+.events-list li:last-child {
+    border-bottom: none;
+}
+
+/* === PÁGINA CONTATO (`contato.html`) === */
+.contact-container {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.contact-info, .contact-form, .contact-map {
+    background-color: var(--light-grey);
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.contact-info p, .contact-info strong {
+    color: var(--subtle-text);
+}
+
+.contact-form form {
+    display: flex;
+    flex-direction: column;
+}
+
+.contact-form label {
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+}
+
+.contact-form input, .contact-form textarea {
+    padding: 0.8rem;
+    border-radius: 4px;
+    border: 1px solid #BDC3C7;
+    background-color: #F8F9F9;
+    color: var(--text-dark);
+    font-family: inherit;
+    font-size: 1rem;
+}
+
+.contact-form button {
+    padding: 0.8rem 1.5rem;
+    margin-top: 1rem;
+    background-color: var(--accent-blue);
+    color: var(--bg-light);
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 700;
+    transition: background-color 0.3s ease;
+}
+
+.contact-form button:hover {
+    background-color: #2980B9;
+}
+
+/* === RESPONSIVIDADE GERAL === */
+@media (max-width: 768px) {
+    .header-container {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .logo {
+        margin-bottom: 1rem;
+    }
+
+    .main-nav {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .main-nav a {
+        margin: 0.5rem 0;
+    }
+
+    .research-line,
+    .research-line.reverse {
+        flex-direction: column;
+    }
+
+    .research-line img {
+        width: 100%;
+        height: auto;
+    }
+
+    .contact-container {
+        flex-direction: column;
+    }
+}
