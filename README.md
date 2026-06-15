@@ -1,2 +1,2 @@
 # site_labi
-Site Laboratóirio de Bioinformática
+Site Laboratório de Bioinformática
